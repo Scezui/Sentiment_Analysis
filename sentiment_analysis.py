@@ -58,16 +58,16 @@ def lemmatize_text(text):
     return text
 
 if st.button('Load Dataset'):  
-    df = pd.read_csv('TextBlobTrain.csv')
+    df = pd.read_csv('balikatan.csv')
     st.write(df.head(20))
     st.write('Dataset shape: ')
     st.text(df.shape)
 
     #Randomly select samples
-    label_0=df[df['label']==0].sample(n=500)
-    label_1=df[df['label']==1].sample(n=500)
+    label_0=df[df['Decision']==Disagree].sample(n=50)
+    label_1=df[df['Decision']==Agree].sample(n=50)
 
-    train = pd.concat([label_1, label_0])
+    train = pd.concat([Decision_Agree, Decision_Disagree])
 
     #remember this very useful function to randomly rearrange the dataset
     train = shuffle(train)
