@@ -67,8 +67,8 @@ if st.button('Load Dataset'):
     st.text(df.shape)
 
     #Randomly select samples
-    label_0=df[df['Decision']==0].sample(n=50)
-    label_1=df[df['Decision']==1].sample(n=50)
+    label_0=df[df['Decision']==0].sample(n=500)
+    label_1=df[df['Decision']==1].sample(n=500)
 
     train = pd.concat([Decision_1, Decision_0])
 
