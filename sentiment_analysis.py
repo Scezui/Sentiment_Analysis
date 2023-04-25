@@ -60,17 +60,17 @@ def lemmatize_text(text):
     text = ' '.join([word.lemma_ if word.lemma_ != '-PRON-' else word.text for word in text])
     return text
 
-if st.button('Load Dataset'):  
+if st.button('Load Dataset'):
     df = pd.read_csv('balikatan.csv')
     st.write(df.head(20))
     st.write('Dataset shape: ')
     st.text(df.shape)
 
     #Randomly select samples
-    label_0=df[df['Decision']==Disagree].sample(n=50)
-    label_1=df[df['Decision']==Agree].sample(n=50)
+    label_0=df[df['Decision']==0].sample(n=50)
+    label_1=df[df['Decision']==1].sample(n=50)
 
-    train = pd.concat([Decision_Agree, Decision_Disagree])
+    train = pd.concat([Decision_1, Decision_0])
 
     #remember this very useful function to randomly rearrange the dataset
     train = shuffle(train)
