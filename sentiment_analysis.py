@@ -3,6 +3,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import re
+from random import shuffle
 
 #The following function definitions show the codes need to perform each task
 def custom_remove_stopwords(text, is_lower_case=False):
