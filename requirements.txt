@@ -6,3 +6,4 @@ numpy
 spacy
 textblob
 scikit-learn
+matplotlib
