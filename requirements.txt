@@ -1,4 +1,3 @@
-pip
 spacy==
 pandas==
 altair
