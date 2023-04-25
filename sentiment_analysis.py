@@ -1,6 +1,9 @@
 import spacy
 import streamlit as st
 import pandas as pd
+import numpy as np
+import re
+
 #The following function definitions show the codes need to perform each task
 def custom_remove_stopwords(text, is_lower_case=False):
     tokens = tokenizer.tokenize(text)
@@ -67,8 +70,8 @@ if st.button('Load Dataset'):
     st.text(df.shape)
 
     #Randomly select samples
-    label_0=df[df['Decision']==0].sample(n=500)
-    label_1=df[df['Decision']==1].sample(n=500)
+    label_0=df[df['Decision']==0].sample(n=10)
+    label_1=df[df['Decision']==1].sample(n=10)
 
     train = pd.concat([Decision_1, Decision_0])
 
