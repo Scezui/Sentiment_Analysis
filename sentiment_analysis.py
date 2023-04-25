@@ -73,7 +73,7 @@ if st.button('Load Dataset'):
     label_0=df[df['Decision']==0].sample(n=10)
     label_1=df[df['Decision']==1].sample(n=10)
 
-    train = pd.concat([Decision_1, Decision_0])
+    train = pd.concat([label_1, label_0])
 
     #remember this very useful function to randomly rearrange the dataset
     train = shuffle(train)
