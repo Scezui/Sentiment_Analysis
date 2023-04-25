@@ -1,5 +1,6 @@
-spacy==3.5.2
-pandas==2.0.1
+pip
+spacy==
+pandas==
 altair
 nltk
 numpy
@@ -7,3 +8,4 @@ spacy
 textblob
 scikit-learn
 matplotlib
+seaborn
