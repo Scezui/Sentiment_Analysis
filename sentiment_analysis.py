@@ -61,7 +61,7 @@ def lemmatize_text(text):
     return text
 
 if st.button('Load Dataset'):
-    df = pd.read_csv('balikatan.csv')
+    df = pd.read_csv('balikatan2.csv')
     st.write(df.head(20))
     st.write('Dataset shape: ')
     st.text(df.shape)
