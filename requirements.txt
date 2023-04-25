@@ -1,5 +1,5 @@
 spacy==3.5.2
-pandas==2.0.1
+pandas
 altair
 nltk
 numpy
