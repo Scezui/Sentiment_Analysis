@@ -15,6 +15,8 @@ import string
 import matplotlib.pyplot as plt
 import seaborn as sns
 import base64
+from PIL import Image
+import urllib.request
 
 # Define the Streamlit app
 def app():
@@ -29,7 +31,7 @@ def app():
     tokenizer = ToktokTokenizer()
 
     st.title("TextBlob Sentiment Analysis")      
-    st.subheader("(c) 2023 Louie F. Cervantes, M.Eng.")
+    st.subheader("(c) 2023 Jimuel S. Servandil, BSCS 3A - AI")
     
     st.subheader('The TextBlob Package')
     st.write('TextBlob is a Python package for natural language processing (NLP) \
@@ -49,10 +51,12 @@ def app():
     0.0 represents a completely objective viewpoint and 1.0 represents a completely \
     subjective viewpoint.")
     
-    st.subheader('Movie Review Dataset')
-    st.write('We load a movie review dataset containing 2 columns: text - contains the text \
-    of the review, and label - contains the 0 for negative and 1 for positive reviews. The \
-    dataset contains 40,000 rows of data. We load the first 20 rows for viewing.')
+    st.subheader('Balikatan 2023 Opinions Dataset')
+    st.write('We load an opinion dataset in regards to the decision of the US and the Philippines \
+    to launch the largest balikatan exercise, even though there is a rising tension in the region.\
+    It contains two columns, first is the text which contains the content of the review, \
+    and label - contains the 0 for negative and 1 for positive reviews. The \
+    dataset contains 50 rows of data. We load the first 20 rows for viewing.')
     
     # with st.echo(code_location='below'):
         
@@ -147,7 +151,11 @@ def app():
         resource-heavy so be patient and check the animated "running" indicator \
         at the upper right is showing that the page is still alive and running.')
         
+        
+        st.markdown("<div style='text-align:center'><img src='https://cdn.pixabay.com/animation/2022/12/05/15/23/15-23-06-837_512.gif'></div>", unsafe_allow_html=True)
+        
         st.text('Doing pre-processing tasks...')
+
         st.text('Removing symbols...')
         train.replace(r'^\s*$', np.nan, regex=True, inplace=True)
         train.dropna(axis=0, how='any', inplace=True)
@@ -158,32 +166,39 @@ def app():
         st.text('Removing non ascii data...')
         train['text']=train['text'].str.encode('ascii', 'ignore').str.decode('ascii')
         
-        st.write('Removing punctuations...')
+        st.text('Removing punctuations...')
         train['text']=train['text'].apply(remove_punctuations)
 
-        st.write('In Natural Language Processing (NLP), stopwords refer to commonly \
-        occurring words in a language that are often filtered out from the text before \
-        processing. These words typically do not contribute much to the meaning of a \
-        sentence and are used primarily to connect other words together. \nExamples of \
-        stopwords in the English language include "the," "a," "an," "and," "in," "on," \
-        "at," "for," "to," "of," "with," and so on.')
+        st.write('''
+            In Natural Language Processing (NLP), stopwords refer to commonly occurring words in a language 
+            that are often filtered out from the text before processing. These words typically do not 
+            contribute much to the meaning of a sentence and are used primarily to connect other words 
+            together. 
+            
+            Examples of stopwords in the English language include "the," "a," "an," "and," "in," "on," 
+            "at," "for," "to," "of," "with," and so on.
+        ''')
+
         
-        st.write('Removing stop words...')
+        st.text('Removing stop words...')
         train['text']=train['text'].apply(custom_remove_stopwords)
         
-        st.write('Removing special characters...')
+        st.text('Removing special characters...')
         train['text']=train['text'].apply(remove_special_characters)
         
-        st.write('Removing HTML...')
+        st.text('Removing HTML...')
         train['text']=train['text'].apply(remove_html)
         
-        st.write('Removing URL...')
+        st.text('Removing URL...')
         train['text']=train['text'].apply(remove_URL)    
         
-        st.write('Removing numbers...')
+        st.text('Removing numbers...')
         train['text']=train['text'].apply(remove_numbers) 
+
+        st.markdown("<div style='text-align:center'><img src='https://www.icegif.com/wp-content/uploads/icegif-2713.gif'></div>", unsafe_allow_html=True)
+
         
-        st.text('We look at our dataset after more pre-processing steps')
+        st.text('\nWe look at our dataset after more pre-processing steps')
         st.write(train.head(50))    
 
         st.write('Removing alpha numeric data...')
