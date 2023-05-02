@@ -30,7 +30,7 @@ def app():
     stopwords_list.remove('not')
     tokenizer = ToktokTokenizer()
 
-    st.title("TextBlob Sentiment Analysis")      
+    st.title("Sentiment Analysis")      
     st.subheader("(c) 2023 Jimuel S. Servandil, BSCS 3A - AI")
     
     st.subheader('The TextBlob Package')
